@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import dao.BookDAO;
+import dao.Session;
 import dto.BookDTO;
 
 public class AddBookView {

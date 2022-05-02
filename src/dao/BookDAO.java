@@ -125,6 +125,19 @@ public class BookDAO {
 		return false;
 	}
 
+	public boolean purchaseBook(int book_id) {
+		String sql = "update book set purchasecnt = purchasecnt + 1 where book_id = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, book_id);
+			
+			return ps.executeUpdate() == 1;
+		} catch (SQLException sqle) {
+			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		return false;
+	}
+	
 	public String titleSearch(String keyword) {
 		String sql = "select * from book where book_title like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
@@ -145,9 +158,6 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
-			}
-			else {
-				result = "none";
 			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
@@ -176,9 +186,6 @@ public class BookDAO {
 				result += rs.getString(9) + "\t";
 				result += rs.getString(10) + "\n";
 			}
-			else {
-				result = "none";
-			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
@@ -205,9 +212,6 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getString(9) + "\t";
 				result += rs.getString(10) + "\n";
-			}
-			else {
-				result = "none";
 			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
@@ -236,9 +240,6 @@ public class BookDAO {
 				result += rs.getString(9) + "\t";
 				result += rs.getString(10) + "\n";
 			}
-			else {
-				result = "none";
-			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
@@ -263,6 +264,45 @@ public class BookDAO {
 			ps.setInt(1, book_id);
 			
 			return ps.executeUpdate() == 1;
+		} catch (SQLException sqle) {
+			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		return false;
+	}
+	public String bestSellerBook() {
+		String sql = "select * from book order by purchasecnt desc";
+		String result = "☆☆☆☆☆ 베스트 셀러 ☆☆☆☆☆\n책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result += rs.getString(1) + "\t";
+				result += rs.getString(2) + "\t";
+				result += rs.getString(3) + "\t";
+				result += rs.getString(4) + "\t";
+				result += rs.getString(5) + "\t";
+				result += rs.getString(6) + "\t";
+				result += rs.getString(7) + "\t";
+				result += rs.getString(8) + "\t";
+				result += rs.getString(9) + "\t";
+				result += rs.getString(10) + "\n";
+			}
+		} catch (SQLException sqle) {
+			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		return result;
+	}
+	public boolean checkBookId(int book_id) {
+		String sql = "select * from book where book_id like ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, book_id);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				return true;
+			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}

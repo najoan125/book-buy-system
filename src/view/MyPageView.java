@@ -3,12 +3,15 @@ package view;
 import java.util.Scanner;
 
 import dao.BasketDAO;
+import dao.BookDAO;
+import dao.BookDAO;
 import dao.Session;
 
 public class MyPageView {
 	public int status = 0;
 	public MyPageView() {
 		Scanner sc = new Scanner(System.in);
+		BookDAO bdao = new BookDAO();
 		BasketDAO badao = new BasketDAO();
 		
 		Loop1:

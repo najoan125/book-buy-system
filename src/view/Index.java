@@ -7,16 +7,15 @@ import dao.BookDAO;
 //index : 시작하는 페이지
 public class Index {
 	public static void main(String[] args) {
-		System.out.println("페라리 4조 / 도서 구매 프로그램 입니다.");
-		
 		BookDAO bdao = new BookDAO();
 		Scanner sc = new Scanner(System.in);
 		while(true) {
-			System.out.println("1. 회원가입\n2. 로그인\n3. 책 검색\n4. 나가기");
+			System.out.println("☆페라리 4조 / 도서 구매 프로그램 입니다.☆");
+			System.out.println("1. 회원가입\n2. 로그인\n3. 책 검색\n4. 공지사항\n5. 베스트셀러\n6. 나가기");
 			int choice = sc.nextInt();
 			
 			//Controller
-			if(choice == 4) {
+			if(choice == 6) {
 				System.out.println("안녕히가세요");
 				break;
 			}
@@ -32,9 +31,9 @@ public class Index {
 				new LoginView();
 				break;
 			case 3:
-				System.out.print("0. 뒤로 가기\n1. 책 제목 검색\n2. 작가 검색\n3. 출판사 검색\n4. 장르 검색\n검색방법을 선택해주세요: ");
-				sc = new Scanner(System.in);
 				for(;;) {
+					System.out.print("0. 뒤로 가기\n1. 책 제목 검색\n2. 작가 검색\n3. 출판사 검색\n4. 장르 검색\n검색방법을 선택해주세요: ");
+					sc = new Scanner(System.in);
 					int choice2 = sc.nextInt();
 					if(choice2 == 0){
 						break;
@@ -44,13 +43,12 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-//						System.out.println(bdao.titleSearch(keyword));
-						String result = bdao.titleSearch(keyword);
-						if (result == "none") {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
+						System.out.println(bdao.titleSearch(keyword));
+						while(true) {
+							System.out.println("\n0. 나가기");
+							int exit=sc.nextInt();
+							if(exit==0)break;
 						}
-						System.out.println(result);
 						break;
 					}
 					else if(choice2 == 2) {
@@ -58,12 +56,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.authorSearch(keyword);
-						if (result == "none") {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.authorSearch(keyword));
 						break;
 					}
 					else if(choice2 == 3) {
@@ -71,12 +64,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.publisherSearch(keyword);
-						if (result == "none") {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.publisherSearch(keyword));
 						break;
 					}
 					else if(choice2 == 4) {
@@ -84,18 +72,41 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.genreSearch(keyword);
-						if (result == "none") {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.genreSearch(keyword));
 						break;
 					}
 					else {
 						System.out.println("다시 입력하세요");
 					}
 				}
+				break;
+			case 4:
+				for(;;) {
+					System.out.println("0. 뒤로 가기\n1. FAQ\n2. 공지사항");
+					sc = new Scanner(System.in);
+					int choice3 = sc.nextInt();
+					if(choice3 == 0) {
+						break;
+					}
+					if(choice3 == 1) {
+						System.out.println("Q. 이 멋진 사이트의 프로그램의 개발자는 누구인가요?\n");
+						System.out.println("A. 잘생긴 정다솔 강사님을 스승으로 둔 페라리4조입니다.\n\n");
+						
+						System.out.println("Q. 구라 아닌가요?\n");
+						System.out.println("A. 네,아닐겁니다.\n");
+					}
+					else if(choice3 == 2){
+						System.out.println("페라리4조 도서구매시스템의 공지사항\n");
+						System.out.println("다양한 기능이 즐비한 저희 시스템을 즐겨주시길 바랍니다.");
+						System.out.println("주문 상태의 허위 표기는 범죄 행위이며 걸릴 시 법적 대응을 통해 강경히 처벌할 것입니다.\n");
+					}
+					else {
+						System.out.println("보기에 있는 숫자를 입력해주세요.");
+					}
+				}
+			case 5:
+				System.out.println(bdao.bestSellerBook());
+				
 				
 			default:
 				System.out.println("보기에 있는 숫자를 입력해주세요.");

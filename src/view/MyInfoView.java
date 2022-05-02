@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import dao.BookDAO;
 import dao.UserDAO;
 
 public class MyInfoView {
@@ -10,6 +11,8 @@ public class MyInfoView {
 		stat = 0;
 		Scanner sc = new Scanner(System.in);
 		UserDAO udao = new UserDAO();
+		BookDAO bdao = new BookDAO();
+		
 		System.out.println(udao.myInfo());
 		System.out.println("0. 뒤로 가기\n1. 비밀번호 수정\n2. 핸드폰 번호 수정\n3. 주소 수정\n4. 이메일 수정\n5. 회원탈퇴");
 		int choice = sc.nextInt();

@@ -5,7 +5,9 @@ import java.util.Scanner;
 import dao.BasketDAO;
 import dao.BookDAO;
 import dao.Session;
+import dao.UserDAO;
 import dto.BasketDTO;
+import dto.OrdersDTO;
 
 public class BookMainView {
 	int book_id;
@@ -15,6 +17,7 @@ public class BookMainView {
 		
 		Scanner sc = new Scanner(System.in);
 		BookDAO bdao = new BookDAO();
+		UserDAO udao = new UserDAO();
 		BasketDAO badao = new BasketDAO();
 		int like = 0;
 		while(true) {

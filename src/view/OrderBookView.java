@@ -25,7 +25,7 @@ public class OrderBookView {
 		}
 		else if(odao.addOrder(order)) {
 			System.out.println(book_id + "번 책 구매를 완료하셨습니다!");
-//			sql --> purchasecnt = purchasecnt + 1
+			bdao.purchaseBook(book_id);
 		}
 		else {
 			System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
