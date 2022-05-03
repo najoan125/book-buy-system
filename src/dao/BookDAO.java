@@ -135,6 +135,7 @@ public class BookDAO {
 		String sql = "select * from book where book_title like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
+			int count = 0;
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -151,7 +152,12 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
+				count++;
 			}
+			if(count==0) {
+				result=null;
+			}
+			
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
@@ -162,6 +168,7 @@ public class BookDAO {
 		String sql = "select * from book where book_author like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
+			int count = 0;
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -178,6 +185,10 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
+				count++;
+			}
+			if (count == 0) {
+				result = null;
 			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
@@ -189,6 +200,7 @@ public class BookDAO {
 		String sql = "select * from book where book_publisher like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
+			int count = 0;
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -205,7 +217,10 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
+				count++;
 			}
+			if (count == 0)
+				result = null;
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
@@ -216,6 +231,7 @@ public class BookDAO {
 		String sql = "select * from book where book_genre like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
+			int count = 0;
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -232,7 +248,10 @@ public class BookDAO {
 				result += rs.getString(8) + "\t";
 				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
+				count++;
 			}
+			if (count == 0)
+				result = null;
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
