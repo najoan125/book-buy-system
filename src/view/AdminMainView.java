@@ -26,7 +26,7 @@ public class AdminMainView {
 			
 			if(choice == 4) {
 				//로그아웃
-				System.out.println(Session.get("login_id")+"님 안녕히가세요~");
+				System.out.println(Session.get("login_id")+"님 안녕히가세요~\n");
 				//로그인한 정보를 담아주는 Session에서 login_id라는 KEY 와 쌍을 이루고 있는 값은
 				//로그아웃을 했다면 없애주어야 한다. 따라서 null로 초기화 해주어야 한다.
 				Session.put("login_id", null);

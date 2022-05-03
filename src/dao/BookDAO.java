@@ -40,9 +40,8 @@ public class BookDAO {
 		return false;
 	}
 	
-	public String getBookList(int book_id) {
+	public boolean checkBookList(int book_id) {
 		String sql = "select * from book where book_id = ?";
-		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, book_id);
@@ -50,21 +49,15 @@ public class BookDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				result += rs.getString(1) + "\t";
-				result += rs.getString(2) + "\t";
-				result += rs.getInt(3) + "\t";
-				result += rs.getInt(4) + "\t";
-				result += rs.getString(5) + "\t";
-				result += rs.getString(6) + "\t";
-				result += rs.getString(7) + "\t";
-				result += rs.getString(8) + "\t";
-				result += rs.getInt(9) + "\t";
-				result += rs.getString(10) + "\n";
+				return true;
+			}
+			else {
+				return false;
 			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
-		return result;
+		return false;
 	}
 
 	public boolean removeBasketBook(int book_id) {
@@ -147,7 +140,7 @@ public class BookDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				result += rs.getString(1) + "\t";
 				result += rs.getString(2) + "\t";
 				result += rs.getInt(3) + "\t";
@@ -174,16 +167,16 @@ public class BookDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				result += rs.getString(1) + "\t";
 				result += rs.getString(2) + "\t";
-				result += rs.getString(3) + "\t";
-				result += rs.getString(4) + "\t";
+				result += rs.getInt(3) + "\t";
+				result += rs.getInt(4) + "\t";
 				result += rs.getString(5) + "\t";
 				result += rs.getString(6) + "\t";
 				result += rs.getString(7) + "\t";
 				result += rs.getString(8) + "\t";
-				result += rs.getString(9) + "\t";
+				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
 			}
 		} catch (SQLException sqle) {
@@ -201,16 +194,16 @@ public class BookDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				result += rs.getString(1) + "\t";
 				result += rs.getString(2) + "\t";
-				result += rs.getString(3) + "\t";
-				result += rs.getString(4) + "\t";
+				result += rs.getInt(3) + "\t";
+				result += rs.getInt(4) + "\t";
 				result += rs.getString(5) + "\t";
 				result += rs.getString(6) + "\t";
 				result += rs.getString(7) + "\t";
 				result += rs.getString(8) + "\t";
-				result += rs.getString(9) + "\t";
+				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
 			}
 		} catch (SQLException sqle) {
@@ -228,16 +221,16 @@ public class BookDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				result += rs.getString(1) + "\t";
 				result += rs.getString(2) + "\t";
-				result += rs.getString(3) + "\t";
-				result += rs.getString(4) + "\t";
+				result += rs.getInt(3) + "\t";
+				result += rs.getInt(4) + "\t";
 				result += rs.getString(5) + "\t";
 				result += rs.getString(6) + "\t";
 				result += rs.getString(7) + "\t";
 				result += rs.getString(8) + "\t";
-				result += rs.getString(9) + "\t";
+				result += rs.getInt(9) + "\t";
 				result += rs.getString(10) + "\n";
 			}
 		} catch (SQLException sqle) {
@@ -275,7 +268,7 @@ public class BookDAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				result += rs.getString(1) + "\t";
 				result += rs.getString(2) + "\t";
 				result += rs.getString(3) + "\t";
@@ -291,22 +284,6 @@ public class BookDAO {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
 		return result;
-	}
-	public boolean checkBookId(int book_id) {
-		String sql = "select * from book where book_id like ?";
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, book_id);
-			
-			rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				return true;
-			}
-		} catch (SQLException sqle) {
-			System.out.println("쿼리 수행 실패 : " + sqle);
-		}
-		return false;
 	}
 }
 

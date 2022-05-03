@@ -29,7 +29,7 @@ public class UserMainView {
 			
 			if(choice == 5) {
 				//로그아웃
-				System.out.println(Session.get("login_id")+"님 안녕히가세요~");
+				System.out.println(Session.get("login_id")+"님 안녕히가세요~\n");
 				//로그인한 정보를 담아주는 Session에서 login_id라는 KEY 와 쌍을 이루고 있는 값은
 				//로그아웃을 했다면 없애주어야 한다. 따라서 null로 초기화 해주어야 한다.
 				Session.put("login_id", null);
@@ -124,8 +124,8 @@ public class UserMainView {
 						System.out.println("Q. 이 멋진 사이트의 프로그램의 개발자는 누구인가요?\n");
 						System.out.println("A. 잘생긴 정다솔 강사님을 스승으로 둔 페라리4조입니다.\n\n");
 						
-						System.out.println("Q. 구라 아닌가요?\n");
-						System.out.println("A. 네,아닐겁니다.\n");
+						System.out.println("Q. 강사님 잘생겼다는 거 구라 아닌가요?\n");
+						System.out.println("A. 네, 아닐 겁니다.\n");
 					}
 					else if(choice3 == 2){
 						System.out.println("페라리4조 도서구매시스템의 공지사항\n");
