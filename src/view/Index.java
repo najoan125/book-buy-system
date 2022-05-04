@@ -43,7 +43,12 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						System.out.println(bdao.titleSearch(keyword));
+						String result = bdao.titleSearch(keyword);
+						if (result == null) {
+							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
+							break;
+						}
+						System.out.println(result);
 						while(true) {
 							System.out.println("\n0. 나가기");
 							int exit=sc.nextInt();
@@ -56,7 +61,17 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						System.out.println(bdao.authorSearch(keyword));
+						String result = bdao.authorSearch(keyword);
+						if (result == null) {
+							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
+							break;
+						}
+						System.out.println(result);
+						while(true) {
+							System.out.println("\n0. 나가기");
+							int exit=sc.nextInt();
+							if(exit==0)break;
+						}
 						break;
 					}
 					else if(choice2 == 3) {
@@ -64,7 +79,17 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						System.out.println(bdao.publisherSearch(keyword));
+						String result = bdao.publisherSearch(keyword);
+						if (result == null) {
+							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
+							break;
+						}
+						System.out.println(result);
+						while(true) {
+							System.out.println("\n0. 나가기");
+							int exit=sc.nextInt();
+							if(exit==0)break;
+						}
 						break;
 					}
 					else if(choice2 == 4) {
@@ -72,7 +97,17 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						System.out.println(bdao.genreSearch(keyword));
+						String result = bdao.genreSearch(keyword);
+						if (result == null) {
+							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
+							break;
+						}
+						System.out.println(result);
+						while(true) {
+							System.out.println("\n0. 나가기");
+							int exit=sc.nextInt();
+							if(exit==0)break;
+						}
 						break;
 					}
 					else {

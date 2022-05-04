@@ -37,7 +37,7 @@ public class MyPageView {
 				//내 책바구니 보기
 				System.out.println("===========내 책바구니 책 목록===========");
 				System.out.println(badao.getBasketList());
-				System.out.println("===================================");
+				System.out.println("==================================");
 				System.out.println("1. 책바구니에서 책 빼내기\n2. 나가기");
 				int choice2 = sc.nextInt();
 				if(choice2 == 2) {
