@@ -17,48 +17,28 @@ public class ModifyBookView {
 			sc = new Scanner(System.in);
 			String keyword = sc.nextLine();
 			
-			String result = bdao.titleSearch(keyword);
-			if (result == null) {
-				System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-				new ModifyBookView();
-			}
-			System.out.println(result);
+			System.out.println(bdao.titleSearch(keyword));
 		}
 		else if(choice2 == 2) {
 			System.out.print("검색어를 입력하세요 : ");
 			sc = new Scanner(System.in);
 			String keyword = sc.nextLine();
 			
-			String result = bdao.authorSearch(keyword);
-			if (result == null) {
-				System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-				new ModifyBookView();
-			}
-			System.out.println(result);
+			System.out.println(bdao.authorSearch(keyword));
 		}
 		else if(choice2 == 3) {
 			System.out.print("검색어를 입력하세요 : ");
 			sc = new Scanner(System.in);
 			String keyword = sc.nextLine();
 			
-			String result = bdao.publisherSearch(keyword);
-			if (result == null) {
-				System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-				new ModifyBookView();
-			}
-			System.out.println(result);
+			System.out.println(bdao.publisherSearch(keyword));
 		}
 		else if(choice2 == 4) {
 			System.out.print("검색어를 입력하세요 : ");
 			sc = new Scanner(System.in);
 			String keyword = sc.nextLine();
 			
-			String result = bdao.genreSearch(keyword);
-			if (result == null) {
-				System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-				new ModifyBookView();
-			}
-			System.out.println(result);
+			System.out.println(bdao.genreSearch(keyword));
 		}
 		System.out.print("0. 뒤로가기\n수정할 책 번호 : ");
 		int book_id = sc.nextInt();

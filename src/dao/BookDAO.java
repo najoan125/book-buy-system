@@ -134,8 +134,9 @@ public class BookDAO {
 	public String titleSearch(String keyword) {
 		String sql = "select * from book where book_title like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		int count = 0;
 		try {
-			int count = 0;
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -154,12 +155,11 @@ public class BookDAO {
 				result += rs.getString(10) + "\n";
 				count++;
 			}
-			if(count==0) {
-				result=null;
-			}
-			
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		if(count == 0) {
+			return null;
 		}
 		return result;
 	}
@@ -167,8 +167,9 @@ public class BookDAO {
 	public String authorSearch(String keyword) {
 		String sql = "select * from book where book_author like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		int count = 0;
 		try {
-			int count = 0;
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -187,11 +188,11 @@ public class BookDAO {
 				result += rs.getString(10) + "\n";
 				count++;
 			}
-			if (count == 0) {
-				result = null;
-			}
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		if(count == 0) {
+			return null;
 		}
 		return result;
 	}
@@ -199,8 +200,9 @@ public class BookDAO {
 	public String publisherSearch(String keyword) {
 		String sql = "select * from book where book_publisher like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		int count = 0;
 		try {
-			int count = 0;
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -219,10 +221,11 @@ public class BookDAO {
 				result += rs.getString(10) + "\n";
 				count++;
 			}
-			if (count == 0)
-				result = null;
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		if(count == 0) {
+			return null;
 		}
 		return result;
 	}
@@ -230,8 +233,9 @@ public class BookDAO {
 	public String genreSearch(String keyword) {
 		String sql = "select * from book where book_genre like ?";
 		String result = "책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		int count = 0;
 		try {
-			int count = 0;
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+keyword+"%");
 			
@@ -250,10 +254,11 @@ public class BookDAO {
 				result += rs.getString(10) + "\n";
 				count++;
 			}
-			if (count == 0)
-				result = null;
 		} catch (SQLException sqle) {
 			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		if(count == 0) {
+			return null;
 		}
 		return result;
 	}
@@ -284,6 +289,29 @@ public class BookDAO {
 	public String bestSellerBook() {
 		String sql = "select * from book order by purchasecnt desc";
 		String result = "☆☆☆☆☆ 베스트 셀러 ☆☆☆☆☆\n책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				result += rs.getString(1) + "\t";
+				result += rs.getString(2) + "\t";
+				result += rs.getString(3) + "\t";
+				result += rs.getString(4) + "\t";
+				result += rs.getString(5) + "\t";
+				result += rs.getString(6) + "\t";
+				result += rs.getString(7) + "\t";
+				result += rs.getString(8) + "\t";
+				result += rs.getString(9) + "\t";
+				result += rs.getString(10) + "\n";
+			}
+		} catch (SQLException sqle) {
+			System.out.println("쿼리 수행 실패 : " + sqle);
+		}
+		return result;
+	}
+	public String likeCountRank() {
+		String sql = "select * from book order by likecnt desc";
+		String result = "☆☆☆☆☆ 좋아요 누적 순위 ☆☆☆☆☆\n책 아이디\t책 제목\t책 가격\t책 재고\t책 작가\t책 출판사\t책 장르\t출판 국가\t출판 년도\t사용 언어\n\n";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

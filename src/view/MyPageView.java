@@ -35,9 +35,9 @@ public class MyPageView {
 			switch(choice) {
 			case 1:
 				//내 책바구니 보기
-				System.out.println("===========내 장바구니 책 목록===========");
+				System.out.println("===========내 책바구니 책 목록===========");
 				System.out.println(badao.getBasketList());
-				System.out.println("==================================");
+				System.out.println("===================================");
 				System.out.println("1. 책바구니에서 책 빼내기\n2. 나가기");
 				int choice2 = sc.nextInt();
 				if(choice2 == 2) {
@@ -47,10 +47,10 @@ public class MyPageView {
 				case 1:
 					//내 책바구니 보기
 					while(true) {
-						System.out.print("빼낼 장바구니 번호를 입력해주세요 : ");
+						System.out.print("빼낼 책바구니 번호를 입력해주세요 : ");
 						int basket_id = sc.nextInt();
 						if(badao.deleteBasket(basket_id)) {
-							System.out.println("정상적으로 장바구니에서 책을 빼내었습니다");
+							System.out.println("정상적으로 책바구니에서 책을 빼내었습니다");
 							break;
 						}
 						else {

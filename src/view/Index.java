@@ -11,7 +11,7 @@ public class Index {
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			System.out.println("☆페라리 4조 / 도서 구매 프로그램 입니다.☆");
-			System.out.println("1. 회원가입\n2. 로그인\n3. 책 검색\n4. 공지사항\n5. 베스트셀러\n6. 나가기");
+			System.out.println("1. 회원가입\n2. 로그인\n3. 책 검색\n4. 고객센터\n5. 도서랭킹\n6. 나가기");
 			int choice = sc.nextInt();
 			
 			//Controller
@@ -43,12 +43,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.titleSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.titleSearch(keyword));
 						while(true) {
 							System.out.println("\n0. 나가기");
 							int exit=sc.nextInt();
@@ -61,17 +56,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.authorSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
-						while(true) {
-							System.out.println("\n0. 나가기");
-							int exit=sc.nextInt();
-							if(exit==0)break;
-						}
+						System.out.println(bdao.authorSearch(keyword));
 						break;
 					}
 					else if(choice2 == 3) {
@@ -79,17 +64,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.publisherSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
-						while(true) {
-							System.out.println("\n0. 나가기");
-							int exit=sc.nextInt();
-							if(exit==0)break;
-						}
+						System.out.println(bdao.publisherSearch(keyword));
 						break;
 					}
 					else if(choice2 == 4) {
@@ -97,17 +72,7 @@ public class Index {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.genreSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
-						while(true) {
-							System.out.println("\n0. 나가기");
-							int exit=sc.nextInt();
-							if(exit==0)break;
-						}
+						System.out.println(bdao.genreSearch(keyword));
 						break;
 					}
 					else {
@@ -140,9 +105,23 @@ public class Index {
 					}
 				}
 			case 5:
-				System.out.println(bdao.bestSellerBook());
-				
-				
+				while(true) {
+					System.out.print("0. 뒤로 가기\n1. 베스트셀러\n2. 좋아요 누적 순위\n");
+					sc = new Scanner(System.in);
+					int choice4 = sc.nextInt();
+					if(choice4 == 0) {
+						break;
+					}
+					if(choice4 == 1) {
+						System.out.println(bdao.bestSellerBook());
+					}
+					else if(choice4 == 2){
+						System.out.println(bdao.likeCountRank());
+					}
+					else {
+						System.out.println("보기에 있는 숫자를 입력해주세요.");
+					}
+				}
 			default:
 				System.out.println("보기에 있는 숫자를 입력해주세요.");
 			}

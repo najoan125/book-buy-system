@@ -24,7 +24,7 @@ public class UserMainView {
 				break;
 			}
 			System.out.println("☆★☆★☆★☆★"+Session.get("login_id")+"님 어서오세요~☆★☆★☆★☆★\n"
-					+ "1. 책 검색(구매)\n2. 마이 페이지\n3. 고객 센터\n4. 베스트셀러\n5. 로그아웃");
+					+ "1. 책 검색 (구매)\n2. 마이 페이지\n3. 고객 센터\n4. 도서랭킹\n5. 로그아웃");
 			int choice = sc.nextInt();
 			
 			if(choice == 5) {
@@ -50,12 +50,7 @@ public class UserMainView {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.titleSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.titleSearch(keyword));
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -69,12 +64,7 @@ public class UserMainView {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.authorSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.authorSearch(keyword));
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -88,12 +78,7 @@ public class UserMainView {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.publisherSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.publisherSearch(keyword));
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -107,12 +92,7 @@ public class UserMainView {
 						sc = new Scanner(System.in);
 						String keyword = sc.nextLine();
 						
-						String result = bdao.genreSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
-						}
-						System.out.println(result);
+						System.out.println(bdao.genreSearch(keyword));
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -158,16 +138,40 @@ public class UserMainView {
 				}
 			case 4:
 				while(true) {
-					System.out.println(bdao.bestSellerBook());
-					System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
-					int book_id = sc.nextInt();
-					if(book_id == 0) {
+					System.out.print("0. 뒤로 가기\n1. 베스트셀러\n2. 좋아요 누적 순위\n");
+					sc = new Scanner(System.in);
+					int choice4 = sc.nextInt();
+					if(choice4 == 0) {
 						break;
 					}
-					new BookMainView(book_id);
-					break;
+					if(choice4 == 1) {
+						while(true) {
+							System.out.println(bdao.bestSellerBook());
+							System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(book_id == 0) {
+								break;
+							}
+							new BookMainView(book_id);
+							break;
+						}
+					}
+					else if(choice4 == 2){
+						while(true) {
+							System.out.println(bdao.likeCountRank());
+							System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(book_id == 0) {
+								break;
+							}
+							new BookMainView(book_id);
+							break;
+						}
+					}
+					else {
+						System.out.println("보기에 있는 숫자를 입력해주세요.");
+					}
 				}
-				
 			}
 		}
 	}
