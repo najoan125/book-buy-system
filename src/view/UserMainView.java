@@ -160,6 +160,7 @@ public class UserMainView {
 						System.out.println("보기에 있는 숫자를 입력해주세요.");
 					}
 				}
+				break;
 			case 4:
 				while(true) {
 					System.out.print("0. 뒤로 가기\n1. 베스트셀러\n2. 좋아요 누적 순위\n");

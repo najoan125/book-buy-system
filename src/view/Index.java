@@ -21,11 +21,24 @@ public class Index {
 			}
 			switch(choice) {
 			case 1:
-				//회원가입
-				//많은 데이터들의 입출력이 일어나기 때문에 코드가 길어진다.
-				//따라서 새로운 View를 띄워준다.(흐름을 이동시킨다)
-				new UserJoinView();
-				break;
+	            //회원가입
+	            //많은 데이터들의 입출력이 일어나기 때문에 코드가 길어진다.
+	            //따라서 새로운 View를 띄워준다.(흐름을 이동시킨다)
+	            while(true) {
+	               System.out.println("0. 뒤로가기\n1. 계속 진행하기");
+	               int choice5 = sc.nextInt();
+	               if(choice5 == 0) {
+	                  break;
+	               }
+	               else if(choice5 != 1) {
+	                  System.out.println("보기에 있는 숫자를 입력해주세요.");
+	               }
+	               else {
+	                  new UserJoinView();
+	                  break;
+	               }
+	            }
+	            break;
 			case 2:
 				//로그인
 				new LoginView();
@@ -128,6 +141,7 @@ public class Index {
 						System.out.println("보기에 있는 숫자를 입력해주세요.");
 					}
 				}
+				break;
 			case 5:
 				while(true) {
 					System.out.print("0. 뒤로 가기\n1. 베스트셀러\n2. 좋아요 누적 순위\n");

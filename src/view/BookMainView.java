@@ -22,7 +22,7 @@ public class BookMainView {
 		int like = 0;
 		while(true) {
 			System.out.println(book_id+" 번 책의 메뉴입니다.");
-			System.out.println("1. 좋아요 누르기\n2. 구매하기\n3. 장바구니에 담기\n4. 돌아가기");
+			System.out.println("1. 좋아요 누르기\n2. 구매하기\n3. 책바구니에 담기\n4. 돌아가기");
 			int choice = sc.nextInt();
 			
 			if(choice == 4) {
@@ -48,7 +48,7 @@ public class BookMainView {
 				//장바구니에 담기
 				BasketDTO basket = new BasketDTO(Session.get("login_id"), book_id);
 				if(badao.addBasket(basket)) {
-					System.out.println("장바구니에 추가되었습니다!");
+					System.out.println("책바구니에 추가되었습니다!");
 				}
 				else {
 					System.out.println("알수 없는 오류가 발생하였습니다. 다시 시도해주세요.");

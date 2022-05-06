@@ -33,7 +33,7 @@ public class BasketDAO {
 
 	public String getBasketList() {
 		String sql = "select * from basket where user_id = ?";
-		String result = "장바구니 번호\t책 아이디\n\n";
+		String result = "책바구니 번호\t\t책 아이디\n\n";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, Session.get("login_id"));
