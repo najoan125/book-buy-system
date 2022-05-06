@@ -51,11 +51,12 @@ public class UserMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.titleSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
-						System.out.println(result);
+						else {
+							System.out.println(result);
+						}
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -70,11 +71,12 @@ public class UserMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.authorSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
-						System.out.println(result);
+						else {
+							System.out.println(result);
+						}
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -89,11 +91,12 @@ public class UserMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.publisherSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
-						System.out.println(result);
+						else {
+							System.out.println(result);
+						}
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {
@@ -108,11 +111,12 @@ public class UserMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.genreSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							break;
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
-						System.out.println(result);
+						else {
+							System.out.println(result);
+						}
 						System.out.print("0. 뒤로가기\n자세히 볼 책 번호 : ");
 						int book_id = sc.nextInt();
 						if(book_id == 0) {

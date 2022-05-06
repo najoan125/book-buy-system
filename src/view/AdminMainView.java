@@ -83,19 +83,21 @@ public class AdminMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.titleSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							continue;
-						}
-						System.out.println(result);
-						System.out.print("삭제할 책 번호 : ");
-						int book_id = sc.nextInt();
-						if(bdao.removeBook(book_id)) {
-							System.out.println(book_id+"번 책 삭제 성공!");
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
 						else {
-							System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							System.out.println(result);
+							System.out.print("삭제할 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(bdao.removeBook(book_id)) {
+								System.out.println(book_id+"번 책 삭제 성공!");
+							}
+							else {
+								System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							}
 						}
+						
 						break;
 					}
 					else if(choice2 == 2) {
@@ -104,19 +106,21 @@ public class AdminMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.authorSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							continue;
-						}
-						System.out.println(result);
-						System.out.print("삭제할 책 번호 : ");
-						int book_id = sc.nextInt();
-						if(bdao.removeBook(book_id)) {
-							System.out.println(book_id+"번 책 삭제 성공!");
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
 						else {
-							System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							System.out.println(result);
+							System.out.print("삭제할 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(bdao.removeBook(book_id)) {
+								System.out.println(book_id+"번 책 삭제 성공!");
+							}
+							else {
+								System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							}
 						}
+						
 						break;
 					}
 					else if(choice2 == 3) {
@@ -125,19 +129,21 @@ public class AdminMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.publisherSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							continue;
-						}
-						System.out.println(result);
-						System.out.print("삭제할 책 번호 : ");
-						int book_id = sc.nextInt();
-						if(bdao.removeBook(book_id)) {
-							System.out.println(book_id+"번 책 삭제 성공!");
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
 						else {
-							System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							System.out.println(result);
+							System.out.print("삭제할 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(bdao.removeBook(book_id)) {
+								System.out.println(book_id+"번 책 삭제 성공!");
+							}
+							else {
+								System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							}
 						}
+						
 						break;
 					}
 					else if(choice2 == 4) {
@@ -146,19 +152,21 @@ public class AdminMainView {
 						String keyword = sc.nextLine();
 						
 						String result = bdao.genreSearch(keyword);
-						if (result == null) {
-							System.out.println("검색 결과가 존재하지 않습니다. 다시 검색해 주세요.");
-							continue;
-						}
-						System.out.println(result);
-						System.out.print("삭제할 책 번호 : ");
-						int book_id = sc.nextInt();
-						if(bdao.removeBook(book_id)) {
-							System.out.println(book_id+"번 책 삭제 성공!");
+						if(result.equals("")) {
+							System.out.println("검색결과가 존재하지 않습니다.");
 						}
 						else {
-							System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							System.out.println(result);
+							System.out.print("삭제할 책 번호 : ");
+							int book_id = sc.nextInt();
+							if(bdao.removeBook(book_id)) {
+								System.out.println(book_id+"번 책 삭제 성공!");
+							}
+							else {
+								System.out.println("알 수 없는 오류 / 다음에 다시 시도해 주세요.");
+							}
 						}
+						
 						break;
 					}
 					else {

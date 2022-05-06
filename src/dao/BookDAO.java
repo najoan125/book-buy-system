@@ -159,7 +159,7 @@ public class BookDAO {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
 		if(count == 0) {
-			return null;
+			return "";
 		}
 		return result;
 	}
@@ -192,7 +192,7 @@ public class BookDAO {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
 		if(count == 0) {
-			return null;
+			return "";
 		}
 		return result;
 	}
@@ -225,7 +225,7 @@ public class BookDAO {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
 		if(count == 0) {
-			return null;
+			return "";
 		}
 		return result;
 	}
@@ -258,7 +258,7 @@ public class BookDAO {
 			System.out.println("쿼리 수행 실패 : " + sqle);
 		}
 		if(count == 0) {
-			return null;
+			return "";
 		}
 		return result;
 	}
